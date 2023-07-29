@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  # Run `docker-compose run install` to install or update the server.
+  install:
+    image: docker.io/steamcmd/steamcmd:latest
+    command: "+login anonymous +app_update 2239530 validate +quit"
+    # Prevent this from running with `docker-compose up`.
+    profiles: ["install"]
+    volumes:
+      - server:/root/Steam/steamapps/common/American Truck Simulator Dedicated
+        Server/
+
+  # Run `docker-compose up` to launch the dedicated server after installing.
+  dedicated:
+    image: docker.io/steamcmd/steamcmd:latest
+    entrypoint: ./amtrucks_server
+    environment:
+      LD_LIBRARY_PATH: /root/server/linux64
+      XDG_DATA_HOME: /data
+    # Forward ports to connect directly via IP. This is not required when
+    # connecting by searching for the search ID.
+    # ports:
+    #   - 21015:21015/tcp
+    #   - 21016:21016/tcp
+    #   - 21015:21015/udp
+    #   - 21016:21016/udp
+    volumes:
+      - ./data:/data
+      - server:/root/server:ro
+    working_dir: /root/server/bin/linux_x64
+
+volumes:
+  server:
