@@ -87,3 +87,15 @@ uset g_console "1"
 ## References
 
 - [SCS Dedicated Server Documentation](https://modding.scssoft.com/wiki/Documentation/Tools/Dedicated_Server)
+
+## License
+
+[![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+To the extent possible under law, the contributors to this project have waived
+all copyright and related or neighboring rights to the files contained in this
+repository. See [LICENSE](LICENSE.md) for details.
+
+## Disclaimer
+
+This project is not affiliated with or endorsed by SCS Software s.r.o.
